@@ -6,44 +6,26 @@
 
 <h4 align="center">Detect AI generated coding answers</h4>
 
-<p align="center">
-  <!-- <a href="https://badge.fury.io/js/electron-markdownify">
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
-  </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a> -->
-  <!-- <a href="">
-      <img src="https://img.shields.io/badge/website-online-blue.svg">
-  </a> -->
-  <a href="https://github.com/zzarif/AI-Detector">
-    <img src="https://img.shields.io/github/last-commit/zzarif/AI-Detector">
-  </a>
-  <a href="https://multilabel-scifi-tags-classifier.vercel.app">
-    <img src="https://img.shields.io/badge/website-online-red.svg">
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-yellow.svg">
-  </a>
 
-</p>
 
-<p align="center">
-  <a href="#overview">Problem Statement</a> •
-  <a href="#data-collection">Data Collection</a> •
-  <a href="#data-preprocessing">Data Preprocessing</a> •
-  <a href="#model-training">Model Training</a> •
-  <a href="#model-compression">Model Compression</a> •
-  <a href="#model-deployment">Model Deployment</a> •
-  <a href="#web-deployment">Web Deployment</a> •
-  <a href="#build-from-source">Build from Source</a> •
-  <a href="#contact">Contact</a>
-</p>
+## Table of Contents
+<ul>
+  <li><a href="#problem-statement">Problem Statement</a></li>
+  <li><a href="#data-description">Data Description</a></li>
+  <li><a href="#data-preprocessing">Data Preprocessing</a></li>
+  <li><a href="#model-training">Model Training</a></li>
+  <li><a href="#model-compression">Model Compression</a></li>
+  <li><a href="#model-deployment">Model Deployment</a></li>
+  <li><a href="#web-deployment">Web Deployment</a></li>
+  <li><a href="#build-from-source">Build from Source</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
 
 ## Problem Statement
 
 Detect AI generated coding answers
 
-## Data Collection
+## Data Description
 
 ## Data Preprocessing
 
