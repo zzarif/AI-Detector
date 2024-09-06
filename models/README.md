@@ -1,1 +1,0 @@
-The exported models can be downloaded from [this](https://drive.google.com/drive/folders/11BSSm_eZtaqGSgqOXZgxwBiiJkZd8RBm?usp=drive_link) link.
