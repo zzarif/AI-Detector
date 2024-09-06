@@ -6,7 +6,17 @@
 
 <h4 align="center">Detect AI generated coding answers</h4>
 
-
+<p align="center">
+  <a href="https://github.com/zzarif/AI-Detector">
+    <img src="https://img.shields.io/github/last-commit/zzarif/AI-Detector">
+  </a>
+  <a href="https://multilabel-scifi-tags-classifier.vercel.app">
+    <img src="https://img.shields.io/badge/website-online-red.svg">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-yellow.svg">
+  </a>
+</p>
 
 ## Table of Contents
 <ul>
@@ -49,7 +59,7 @@ cd AI-Detector/
 2. Initialize and activate virtual environment
 
 ```bash
-virtualenv --no-site-packages venv
+virtualenv venv
 source venv/Scripts/activate
 ```
 
