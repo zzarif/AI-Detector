@@ -1,1 +1,0 @@
-The exported dataloaders can be downloaded from [this](https://drive.google.com/drive/folders/19nPJBwcw-6xCi63lDgTfPQSsLFEtmbrV?usp=drive_link) link.
