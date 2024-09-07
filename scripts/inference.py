@@ -5,12 +5,10 @@ from sentence_transformers import SentenceTransformer, util
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--test_data', type=str,
-                    default='test_data.csv', help='Specify test data')
 parser.add_argument('--gpu', type=int, default=0,
                     help='Specify GPU device for training')
 parser.add_argument('--model', type=str,
-                    default='paraphrase-MiniLM-L6-v2', help='Specify inference model')
+                    default='all-MiniLM-L6-v2', help='Specify inference model')
 args = parser.parse_args()
 device = torch.device(
     f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu")
@@ -35,10 +33,22 @@ if __name__ == "__main__":
     model = SentenceTransformer(model=model_path, device=device)
 
     # Example usage
-    question = "What is the time complexity of quicksort?"
-    candidate_answer = "The average time complexity of quicksort is O(n log n)."
-    ai_answer = "Quicksort has an average and best-case time complexity of O(n log n), but in the worst case, it can be O(n^2)."
-
+    question = "Write a function to find the largest element in an array."
+    candidate_answer = """
+    def find_largest(arr):
+        if not arr:
+            return None
+        max_element = arr[0]
+        for element in arr[1:]:
+            if element > max_element:
+                max_element = element
+        return max_element
+    """
+    ai_answer = """
+    def find_largest(arr):
+        return max(arr) if arr else None
+    """
+    
     similarity = predict_similarity(
         model, question, candidate_answer, ai_answer)
     print(f"Similarity score: {similarity:.4f}")

@@ -1,0 +1,19 @@
+{
+  "Java": "jav",
+  "JavaScript": "js",
+  "C++": "cpp",
+  "Python": "py",
+  "Swift": "swift",
+  "React": "js",
+  "Kotlin": "kt",
+  "SQL": "sql",
+  "Docker": "dockerfile",
+  "C#": "cs",
+  "PHP & JavaScript": "js",
+  "HTML/CSS": "css",
+  "JavaScript-React": "js",
+  "PHP": "php",
+  "TypeScript": "ts",
+  "Go": "go",
+  "Dart": "dart"
+}
