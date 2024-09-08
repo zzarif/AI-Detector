@@ -12,11 +12,8 @@ def index():
         question = request.form['question']
         candidate_code = request.form['candidate_code']
         ai_response = request.form['ai_response']
-        # output = predict_genres(question, candidate_code, ai_response)[0]
-        # confidence_list = output['confidences']
-        # labels = [elem['label'] for elem in confidence_list]
-        time.sleep(2)
-        return render_template("result.html", score="85")
+        output = predict_genres(question, candidate_code, ai_response)[0]
+        return render_template("result.html", score=output*100)
     else:
         return render_template("index.html")
 
@@ -30,4 +27,5 @@ def predict_genres(question, candidate_code, ai_response):
         ]
     }).json()
     data = response["data"]
+    print(data)
     return data
