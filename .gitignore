@@ -1,5 +1,4 @@
 venv
 __pycache__
-huggingface
 checkpoints
 fine-tuned_*

@@ -3,6 +3,7 @@ import json
 import pandas as pd
 
 
+# map source code extension with language
 file_extensions_dict = {
     "Java": "jav",
     "JavaScript": "js",
@@ -29,6 +30,7 @@ def combine_question_answer(question, answer):
     return f"Question: {question} Answer: {answer}"
 
 
+# function to load raw coding question data
 def load_question_data(source_codes_path):
     questions = []
     for folder in os.listdir(source_codes_path):
@@ -58,6 +60,7 @@ def load_question_data(source_codes_path):
     return questions
 
 
+# function that creates preprocessed data
 def preprocess_data(source_codes_path, source_codes_labels):
     questions = load_question_data(source_codes_path)
     plagiarism_scores = pd.read_excel(source_codes_labels)
