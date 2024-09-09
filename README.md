@@ -37,7 +37,9 @@ The first solution where I fine-tune multiple Sentence Transformers on the given
 
 A custom [Web Application](https://ai-detector-scopic.vercel.app/) was developed with Flask to demonstrate the AI detection model's capability. It uses the HuggingFace Spaces API in the backend. Following are some snapshots of the Flask webapp:
 
-[attach image]
+![Flask Web App](/ai_detector_home.png)
+
+![Flask Web App](/ai_detector_result.png)
 
 ## Build from Source
 
