@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block title %}Score - AI Detector{% endblock %} {%
+block content %}
+<h1><b>AI Detector</b> - Detect AI Generated Code</h1>
+<div class="container">
+  <label for="text">The candidate's code is:</label> <br />
+  <label for="text" class="score">{{ score }}%</label> <br />
+  <label for="text" class="ai_gen">AI generated</label> <br />
+</div>
+{% endblock %}

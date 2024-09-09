@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title %}AI Detector{% endblock %} {% block
+content %}
+<h1><b>AI Detector</b> - Detect AI Generated Code</h1>
+<div class="container">
+  <form action="/" method="post" onsubmit="changeButtonText()">
+    <label for="candidate_code">Coding Question</label>
+    <textarea
+      id="question"
+      name="question"
+      class="question"
+      placeholder="Paste the coding question here"
+    ></textarea>
+    <div>
+      <div>
+        <label for="candidate_code">Candidate's Answer</label>
+        <textarea
+          class="answer"
+          id="candidate_code"
+          name="candidate_code"
+          placeholder="Paste candidate's code here"
+        ></textarea>
+      </div>
+      <div>
+        <label for="ai_response">AI Generated Response</label>
+        <textarea
+          class="answer"
+          id="ai_response"
+          name="ai_response"
+          placeholder="Paste equivalent AI generated code for reference"
+        ></textarea>
+      </div>
+    </div>
+    <input
+      id="analyzeButton"
+      class="analyzeButton"
+      type="submit"
+      value="Analyze Candidate's Code"
+    />
+  </form>
+</div>
+{% endblock %}

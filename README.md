@@ -189,7 +189,7 @@ The detailed preprocessing documentation can be found in [`preprocessing.ipynb`]
 5 different Sentence Transformers were selected for fine-tuning based on their average performance on sentence encoding from [sbert.net](https://www.sbert.net). The model training step involves the follwoing:
 
 1. Splits the preprocessed data into training and validation data
-2. Specifies data feature columns and label column for the training data. This is where feature extraction takes place (coding answers are converted to embeddings)
+2. Specifies data feature columns (`candidate_combined`, `ai_combined`) and label column (`similarity_score`) for the training data. This is where feature extraction takes place (coding answers are converted to embeddings)
 3. Loads training data into **DataLoaders** with hyperparameter `batch_size`
 4. Defines the Sentence Transformer model architecture
 5. Defines the loss function as `CosineSimilarityLoss`
@@ -341,7 +341,9 @@ The HuggingFace deployment source code can be found in the [`huggingface`](/depl
 
 A custom [Web Application](https://ai-detector-scopic.vercel.app/) was developed with Flask to demonstrate the AI detection model's capability. It uses the HuggingFace Spaces API in the backend. Following are some snapshots of the Flask webapp:
 
-[attach image]
+![Flask Web App](/deployment/flask_app/ai_detector_home.png)
+
+![Flask Web App](/deployment/flask_app/ai_detector_result.png)
 
 The Flask web app deployment source code can be found in the [`flask_app`](/deployment/flask_app/) directory of this repository.
 
