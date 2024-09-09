@@ -1,0 +1,2 @@
+def find_largest(arr):
+    return max(arr) if arr else None
