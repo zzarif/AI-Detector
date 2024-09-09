@@ -186,15 +186,35 @@ The detailed preprocessing documentation can be found in [`preprocessing.ipynb`]
 
 ## Model Training
 
-5 different Sentence Transformers were selected for fine-tuning based on their average performance on sentence encoding from [sbert.net](https://www.sbert.net). The model training step involves the follwoing:
+5 different Sentence Transformers were selected for fine-tuning based on their average performance on sentence encoding from [sbert.net](https://www.sbert.net). Model training is where feature extraction happens. The process of **feature extraction** is centered around the specified `SentenceTransformer` model, which is used to encode textual data into dense numerical vectors (embeddings). Following is a detailed explanation of how feature extraction is done:
 
-1. Splits the preprocessed data into training and validation data
-2. Specifies data feature columns (`candidate_combined`, `ai_combined`) and label column (`similarity_score`) for the training data. This is where feature extraction takes place (coding answers are converted to embeddings)
-3. Loads training data into **DataLoaders** with hyperparameter `batch_size`
-4. Defines the Sentence Transformer model architecture
-5. Defines the loss function as `CosineSimilarityLoss`
-6. Defines an evaluator with validation data
-7. Finally, fine-tunes the model over the specified hyperparameter `epochs`
+1. **Input Data**:
+   - The input to the model consists of two columns: `candidate_combined` (the candidate's answer) and `ai_combined` (the AI-generated answer). These represent the two pieces of text whose similarity will be compared.
+   - The `similarity_score` is the label, representing how similar the two pieces of text are, which the model learns to predict during training.
+
+2. **Creating Examples for Training**:
+   - The line `InputExample(texts=[row['candidate_combined'], row['ai_combined']], label=float(row['similarity_score']))` creates training examples for the model.
+   - `texts` is a pair of texts that will be encoded into numerical vectors (embeddings) by the `SentenceTransformer` model. These embeddings represent the features extracted from the text data.
+   - These `InputExample`s are then passed into a `DataLoader`, which prepares batches of data for training.
+
+3. **SentenceTransformer Model**:
+   - The core feature extraction happens when the `SentenceTransformer` is initialized. This model is pre-trained on large corpora and can convert input texts into high-dimensional vectors (embeddings).
+   - When the training data is passed through the model, it encodes each text (from both `candidate_combined` and `ai_combined`) into a fixed-size embedding. These embeddings are vector representations of the text that capture semantic meaning, making them suitable for downstream tasks like similarity measurement.
+
+4. **Cosine Similarity Loss**:
+   - The `CosineSimilarityLoss` is used as the loss function for training. The model learns to minimize the cosine distance between embeddings of semantically similar texts (texts with higher `similarity_score`) and maximize the distance for dissimilar ones.
+   - This process adjusts the model's weights to better encode the features that represent textual similarity.
+
+5. **Validation and Evaluation**:
+   - For validation, the code prepares examples similarly, but these are used for evaluation instead of training.
+   - The `EmbeddingSimilarityEvaluator` computes the similarity between the embeddings of `candidate_combined` and `ai_combined` using their cosine similarity, and compares it with the actual `similarity_score`.
+
+6. **How Features Are Encoded**:
+   - Each piece of text (both `candidate_combined` and `ai_combined`) is passed through the `SentenceTransformer` model.
+   - The model tokenizes the text, then converts it into a dense embedding vector of fixed length. These embeddings encode semantic information about the text.
+   - The embeddings are the "features" extracted from the text, which are then used to compute similarity.
+
+The **features** in this code are the dense embeddings extracted by the `SentenceTransformer` model. These embeddings are used to train the model to learn similarities between pairs of text using the cosine similarity loss function.
 
 All of the 5 models were trained for `5` epochs with a varying batch size from `4` to `16`. The detailed model training documentation can be found in [`train.ipynb`](/notebooks/train.ipynb) Jupyter Notebook or [`train.py`](/scripts/train.py) file. The fine-tuned model is saved at [`models`](/models/) directory.
 
@@ -308,7 +328,7 @@ From the above metrics, we can derive several insights about the performance of 
    - Though it has higher errors (MSE = 0.0086, RMSE = 0.0925) than distilroberta, they are still reasonable.
    - With an R-squared score of 0.8805, it demonstrates strong predictive power and is one of the top-performing models overall.
 
-### Summary of insights:
+### Summary:
 - **all-distilroberta-v1** consistently performs best in terms of error metrics (MSE, RMSE, MAE) and variance explained (R-squared).
 - **multi-qa-mpnet-base-dot-v1** excels in similarity-based evaluations (Spearman correlations), making it highly effective for tasks requiring strong semantic understanding.
 - **all-mpnet-base-v2** offers a balanced performance across both error and similarity metrics.
@@ -333,7 +353,7 @@ The detailed model export and compression documentation can be found in [`export
 
 The quantized `all-distilroberta-v1` model was deployed to [HuggingFace](https://huggingface.co/spaces/zzarif/AI-Detector) spaces with Gradio. Following is a snapshot of the HuggingFace app.
 
-[attach image]
+![HF deployment](/deployment/huggingface/hf_deployment.png)
 
 The HuggingFace deployment source code can be found in the [`huggingface`](/deployment/huggingface/) directory of this repository.
 
